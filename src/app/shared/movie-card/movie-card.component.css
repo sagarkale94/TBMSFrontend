@@ -1,0 +1,15 @@
+.movie-card{
+  width: 90%;
+  height: 100%;
+  padding: 0 !important;
+}
+
+.movie-primary-details{
+  padding: 5px 10px;
+  height: 20%;
+}
+
+.movie-primary-details h4{
+  padding: 0;
+  margin: 0;
+}

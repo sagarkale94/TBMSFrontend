@@ -1,0 +1,17 @@
+<mat-card class="booking-card">
+  <h4>Movie Title 1</h4>
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Choose Date & Time">
+      <app-choose-date-time></app-choose-date-time>
+    </mat-tab>
+    <mat-tab label="Choose Seat">
+      <app-choose-seat></app-choose-seat>
+    </mat-tab>
+    <mat-tab label="Pay">
+      Pay
+    </mat-tab>
+  </mat-tab-group>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="primary">Next</button>
+  </div>
+</mat-card>

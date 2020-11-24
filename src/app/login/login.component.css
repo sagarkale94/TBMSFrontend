@@ -1,0 +1,17 @@
+.login-container{
+  height: 100%;
+  position: relative;
+}
+
+.ic-close{
+  position: absolute;
+  top:0px;
+  right: 0px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.ic-close:hover{
+  background-color: #6b6b6b10;
+}

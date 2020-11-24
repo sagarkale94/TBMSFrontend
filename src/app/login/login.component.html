@@ -1,0 +1,28 @@
+<div fxLayout="row" class="login-container">
+  <mat-icon matTooltip="close" class="ic-close" (click)="onCloseIconClick()">close</mat-icon>
+  <div fxFlex=50 fxLayout="column" fxLayoutAlign="center center">
+    <h2>BookYourShow</h2>
+    <h3>Login & Enjoy Your Show</h3>
+  </div>
+  <div fxFlex=50 fxLayout="row" fxLayoutAlign="center center">
+    <form [formGroup]="loginFormGroup" fxLayout="column" fxFlex="60" onsubmit="return false;">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h4>Sign In</h4>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your email</mat-label>
+        <input type="email" matInput placeholder="pat@example.com" required formControlName="email">
+        <mat-error>Invalid email</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error>Invalid password</mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" (click)="onLoginBtnClick()">Login</button>
+    </form>
+  </div>
+</div>

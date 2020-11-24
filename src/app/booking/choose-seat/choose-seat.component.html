@@ -1,0 +1,32 @@
+<div class="seat-chart-container">
+  <div fxLayout="column" fxLayoutGap="15px" class="seat-indicator">
+    <div fxLayout="row" fxLayoutGap="15px">
+      <div fxLayout="row" fxLayoutAlign="center center" class="seat-ic seat-platinum"></div>
+      <span>Platinum seats</span>
+    </div>
+    <div fxLayout="row" fxLayoutGap="15px">
+      <div fxLayout="row" fxLayoutAlign="center center" class="seat-ic seat-gold"></div>
+      <span>Gold seats</span>
+    </div>
+    <div fxLayout="row" fxLayoutGap="15px">
+      <div fxLayout="row" fxLayoutAlign="center center" class="seat-ic seat-silver"></div>
+      <span>Silver seats</span>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-grid-list fxFlex=50 cols="6" rowHeight="70px">
+      <mat-grid-tile *ngFor="let seatPlatinum of seatsPlatinum">
+        <div fxLayout="row" fxLayoutAlign="center center" class="seat seat-platinum">
+          {{seatPlatinum.seatNo}}</div>
+      </mat-grid-tile>
+      <mat-grid-tile *ngFor="let seatGold of seatsGold">
+        <div fxLayout="row" fxLayoutAlign="center center" class="seat seat-gold">
+          {{seatGold.seatNo}}</div>
+      </mat-grid-tile>
+      <mat-grid-tile *ngFor="let seatSilver of seatsSilver">
+        <div fxLayout="row" fxLayoutAlign="center center" class="seat seat-silver">
+          {{seatSilver.seatNo}}</div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

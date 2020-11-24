@@ -1,0 +1,45 @@
+.seat-chart-container{
+  padding: 40px;
+  position: relative;
+}
+
+.seat-indicator{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.seat{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.seat-ic{
+  width: 20px;
+  height: 20px;
+}
+
+.seat-platinum{
+  border: 1px solid #767cc7;
+}
+
+.seat-platinum:hover{
+  background-color: #767bc734;
+}
+
+.seat-gold{
+  border: 1px solid #f7c849;
+}
+
+.seat-gold:hover{
+  background-color: #f7c94934;
+}
+
+.seat-silver{
+  border: 1px solid #d8d8d8;
+}
+
+.seat-silver:hover{
+  background-color: #d8d8d83a;
+}
