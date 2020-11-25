@@ -6,8 +6,19 @@
       </button>
       <h1 class="example-app-name">BookYourShow</h1>
     </div>
-    <div>
-      <button mat-stroked-button (click)="onLogInBtnClick()">Login</button>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
+      <div *ngIf="isAdmin" class="admin-menus">
+        <a href="" routerLink="/movie-management" routerLinkActive="active-nav">Movies</a>
+        <a href="" routerLink="/123" routerLinkActive="active-nav">User</a>
+        <a href="" routerLink="/123" routerLinkActive="active-nav">Seat</a>
+      </div>
+      <button *ngIf="checkIsUserLoggedIn()" [matMenuTriggerFor]="menu" mat-icon-button>
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onLogoutBtnClick()">Logout</button>
+      </mat-menu>
+      <button *ngIf="!checkIsUserLoggedIn()" mat-stroked-button (click)="onLogInBtnClick()">Login</button>
     </div>
   </mat-toolbar>
 

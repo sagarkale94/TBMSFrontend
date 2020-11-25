@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'booking/:movieId',
     loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule)
+  },
+  {
+    path: 'movie-management',
+    loadChildren: () => import('./movie-management/movie-management.module').then(m => m.MovieManagementModule)
   }
 ];
 

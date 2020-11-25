@@ -39,3 +39,15 @@ h1.example-app-name {
 .mat-sidenav-style{
   min-width: 250px;
 }
+
+.admin-menus a{
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 30px;
+}
+
+.active-nav{
+  font-weight: bold;
+}

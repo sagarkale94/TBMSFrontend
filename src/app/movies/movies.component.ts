@@ -1,6 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Movie } from '../shared/model/movie';
+import { Movie } from './models/movie';
+import { MovieService } from './services/movie.service';
+import { ERR_CODE_SUCCESS, ERR_CODE_NO_RECORD, ERR_CODE_ERROR, API_ERR_MESSAGE } from '../app.constant';
+import { UiService } from '../services/ui.service';
 
 @Component({
   selector: 'app-movies',
@@ -13,17 +16,14 @@ export class MoviesComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  movies: Movie[] = [
-    { name: 'Movie Title 1', picurl: 'https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg' },
-    { name: 'Movie Title 2', picurl: 'https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg' },
-    { name: 'Movie Title 3', picurl: 'https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg' },
-    { name: 'Movie Title 4', picurl: 'https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg' },
-    { name: 'Movie Title 5', picurl: 'https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg' },
-    { name: 'Movie Title 6', picurl: 'https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg' },
-    { name: 'Movie Title 7', picurl: 'https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg' },
-  ];
+  movies: Movie[] = [];
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher,
+    private movieService: MovieService,
+    private uiService: UiService,
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -31,6 +31,21 @@ export class MoviesComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getAllMovies();
+  }
+
+  getAllMovies() {
+    this.movieService.getAllMovies().subscribe(
+      resp => {
+        if (resp.errCode == ERR_CODE_SUCCESS) {
+          this.movies = resp.data;
+        } else if (resp.errCode == ERR_CODE_NO_RECORD || resp.errCode == ERR_CODE_ERROR) {
+          this.uiService.showSnackbar(resp.message);
+        }
+      },
+      err => {
+        this.uiService.showSnackbar(API_ERR_MESSAGE);
+      });
   }
 
   ngOnDestroy(): void {

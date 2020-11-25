@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from '../model/movie';
+import { Movie } from '../../movies/models/movie';
 import { Router } from '@angular/router';
 
 @Component({
