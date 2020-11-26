@@ -1,1 +1,83 @@
-<p>movie-list works!</p>
+<div class="movies-container">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h3>Movies</h3>
+    <button mat-raised-button color="primary" (click)="onAddMovieBtnClick()">Add Movie</button>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="isNoRecordFound; else recordFound"> No Record Found</div>
+  <ng-template #recordFound>
+    <mat-table [dataSource]="dataSource" class="app-mat-table">
+      <ng-container matColumnDef="srNo">
+        <mat-header-cell *matHeaderCellDef fxFlex.gt-xs=5 fxLayoutAlign="start center">
+          Sr.No.
+        </mat-header-cell>
+        <mat-cell (click)="$event.stopPropagation()" *matCellDef="let i = index" fxFlex.gt-xs=5
+          fxLayoutAlign="start center">
+          {{i+(pageSize*pageNo)+1}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="poster">
+        <mat-header-cell *matHeaderCellDef fxHide.xs fxFlex.gt-xs=10 fxLayoutAlign="center center">
+          Poster
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxHide.xs fxFlex.gt-xs=10 fxLayoutAlign="center center">
+          <div [ngStyle]="{
+              'background-image': 'url(' + element.posterUrl + ')',
+              'background-size': 'contain',
+              'background-position': 'center center',
+              'background-repeat': 'no-repeat',
+              'width':'100px',
+              'height':'100px',
+              'margin': '10px'
+            }"></div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef fxFlex.gt-xs=30 fxLayoutAlign="start center">
+          Title
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex.gt-xs=30 fxLayoutAlign="start center">
+          {{element.name}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef fxHide.xs fxFlex.gt-xs=40 fxLayoutAlign="start center">
+          Description
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxHide.xs fxFlex.gt-xs=40 fxLayoutAlign="start center">
+          {{element.description}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef fxFlex.gt-xs=7 fxLayoutAlign="end center">
+          Actions
+        </mat-header-cell>
+        <mat-cell (click)="$event.stopPropagation()" *matCellDef="let element" fxFlex.gt-xs=7
+          fxLayoutAlign="end center">
+          <div>
+            <mat-menu #actionMenu="matMenu">
+              <a mat-menu-item (click)="onEditMovieBtnClicked(element._id)">
+                <mat-icon matListIcon>edit</mat-icon>
+                <span>Edit</span>
+              </a>
+              <a mat-menu-item (click)="onDeleteMovieBtnClicked(element._id)">
+                <mat-icon matListIcon>delete</mat-icon>
+                <span>Delete</span>
+              </a>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="actionMenu">
+              <mat-icon matTooltip="Actions">format_list_bulleted</mat-icon>
+            </button>
+          </div>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row class="app-mat-table-row" *matRowDef="let element; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+    <div>
+      <mat-paginator class="app-mat-table-paginator" [length]="pageSize+1" [pageSize]="pageSize" [pageIndex]="pageNo"
+        (page)="onPageChangeClicked($event)">
+      </mat-paginator>
+    </div>
+  </ng-template>
+</div>

@@ -17,6 +17,9 @@ export class MoviesComponent implements OnInit {
   private _mobileQueryListener: () => void;
 
   movies: Movie[] = [];
+  pageNo = 0;
+  pageSize = 10;
+  isLoadMoreBtnDisabled: boolean = false;
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
@@ -35,17 +38,25 @@ export class MoviesComponent implements OnInit {
   }
 
   getAllMovies() {
-    this.movieService.getAllMovies().subscribe(
+    this.movieService.getAllMovies(this.pageNo, this.pageSize).subscribe(
       resp => {
         if (resp.errCode == ERR_CODE_SUCCESS) {
-          this.movies = resp.data;
-        } else if (resp.errCode == ERR_CODE_NO_RECORD || resp.errCode == ERR_CODE_ERROR) {
+          this.movies = this.movies.concat(resp.data);
+        } else if (resp.errCode == ERR_CODE_NO_RECORD) {
+          this.isLoadMoreBtnDisabled = true;
+          this.uiService.showSnackbar(resp.message);
+        } else if (resp.errCode == ERR_CODE_ERROR) {
           this.uiService.showSnackbar(resp.message);
         }
       },
       err => {
         this.uiService.showSnackbar(API_ERR_MESSAGE);
       });
+  }
+
+  onLoadMoreBtnClick() {
+    this.pageNo++;
+    this.getAllMovies();
   }
 
   ngOnDestroy(): void {

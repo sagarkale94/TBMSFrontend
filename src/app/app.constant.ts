@@ -5,3 +5,6 @@ export const ERR_CODE_ERROR = -1;
 export const API_ERR_MESSAGE = "Something went wrong..!!";
 
 export const ROLE_TYPE_ADMIN = 1;
+
+export const ACTION_ADD = 1;
+export const ACTION_EDIT = 2;

@@ -49,5 +49,11 @@ h1.example-app-name {
 }
 
 .active-nav{
-  font-weight: bold;
+  font-weight: 500 !important;
+  text-decoration: underline !important;
+}
+
+.app-name a{
+  text-decoration: none;
+  color: white;
 }

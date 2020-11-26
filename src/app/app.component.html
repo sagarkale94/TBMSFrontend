@@ -1,16 +1,18 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="example-toolbar" fxLayout="row" fxLayoutAlign="space-between center">
-    <div>
+    <div class="app-name">
       <button *ngIf="mobileQuery.matches" mat-icon-button (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h1 class="example-app-name">BookYourShow</h1>
+      <a routerLink="/">
+        <h1 class="example-app-name">BookYourShow</h1>
+      </a>
     </div>
     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
-      <div *ngIf="isAdmin" class="admin-menus">
-        <a href="" routerLink="/movie-management" routerLinkActive="active-nav">Movies</a>
-        <a href="" routerLink="/123" routerLinkActive="active-nav">User</a>
-        <a href="" routerLink="/123" routerLinkActive="active-nav">Seat</a>
+      <div *ngIf="isAdmin && checkIsUserLoggedIn()" class="admin-menus">
+        <a routerLink="/movie-management/movie-list" routerLinkActive="active-nav">Movies</a>
+        <a routerLink="/123" routerLinkActive="active-nav">User</a>
+        <a routerLink="/123" routerLinkActive="active-nav">Seat</a>
       </div>
       <button *ngIf="checkIsUserLoggedIn()" [matMenuTriggerFor]="menu" mat-icon-button>
         <mat-icon>person</mat-icon>

@@ -1,1 +1,27 @@
-<p>add-movie works!</p>
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h3>{{isDialogOpenedForActionAdd ? 'Add' :'Edit' + ' Movie'}}</h3>
+    <mat-icon matTooltip="close" class="ic-close" (click)="onCloseIconClick()">close</mat-icon>
+  </div>
+  <form [formGroup]="movieFormGroup" fxLayout="column" onsubmit="return false;">
+    <mat-form-field appearance="outline">
+      <mat-label>Movie Name</mat-label>
+      <input matInput required formControlName="name">
+      <mat-error>Invalid movie name</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Movie Description</mat-label>
+      <textarea matInput required formControlName="description"></textarea>
+      <mat-error>Invalid movie description</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Movie Poster Url</mat-label>
+      <input matInput required formControlName="posterUrl">
+      <mat-error>Invalid movie poster url</mat-error>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button type="submit" mat-raised-button color="primary"
+        (click)="onAddBtnClick()">{{isDialogOpenedForActionAdd ? 'Add' :'Save'}}</button>
+    </div>
+  </form>
+</div>

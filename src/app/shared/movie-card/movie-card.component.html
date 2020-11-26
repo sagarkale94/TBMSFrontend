@@ -5,7 +5,7 @@
       <h4>{{movie.name}}</h4>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center">
-      <span [matTooltip]="movie.description">{{movie.description.substring(0,15)+'... '}}</span>
+      <span [matTooltip]="movie.description">{{movie.description.substring(0,12)+'... '}}</span>
       <button mat-stroked-button color="primary" (click)="onBookTicketBtnClick()">Book Ticket</button>
     </div>
   </div>

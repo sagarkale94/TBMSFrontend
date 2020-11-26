@@ -1,5 +1,9 @@
-<mat-grid-list [cols]="mobileQuery.matches ? 1 : 4" rowHeight="400px" style="background-color: #d8431508;">
+<mat-grid-list [cols]="mobileQuery.matches ? 1 : 4" rowHeight="400px">
   <mat-grid-tile *ngFor="let movie of movies" [colspan]="1" [rowspan]="1">
     <app-movie-card [movie]="movie" class="comp-movie-card"></app-movie-card>
   </mat-grid-tile>
 </mat-grid-list>
+<div fxLayout="row" fxLayoutAlign="center center" class="load-more-btn-container">
+  <button [disabled]="isLoadMoreBtnDisabled" mat-stroked-button color="primary" (click)="onLoadMoreBtnClick()">Load
+    More</button>
+</div>
