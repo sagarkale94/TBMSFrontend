@@ -14,4 +14,8 @@ export class AppService {
     return this.http.post<LoginResponse>(`${environment.apiBaseUrl}login`, { email: email, password: password });
   }
 
+  signUp(email: string, password: string) {
+    return this.http.post<LoginResponse>(`${environment.apiBaseUrl}signup`, { email: email, password: password });
+  }
+
 }

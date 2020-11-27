@@ -19,7 +19,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   onBookTicketBtnClick() {
-    this.router.navigate(['/booking/1']);
+    this.router.navigate([`/booking/${this.movie._id}`]);
   }
 
 }

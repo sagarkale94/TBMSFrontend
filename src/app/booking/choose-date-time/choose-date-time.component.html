@@ -2,7 +2,8 @@
   <div fxFlex="50" fxLayout="column" fxLayoutAlign="center center">
     <h3>Choose Date</h3>
     <div style="width: 300px; height: auto; border: 1px solid #eee; border-radius: 4px;">
-      <mat-calendar></mat-calendar>
+      <mat-calendar [selected]="selectedDate" (selectedChange)="selectedChange($event)" [minDate]="minimumDate">
+      </mat-calendar>
     </div>
   </div>
   <div fxFlex="45">

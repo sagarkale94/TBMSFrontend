@@ -18,7 +18,7 @@ export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
   pageNo = 0;
-  pageSize = 10;
+  pageSize = 12;
   isLoadMoreBtnDisabled: boolean = false;
 
   constructor(

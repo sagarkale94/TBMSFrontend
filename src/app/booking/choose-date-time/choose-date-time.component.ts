@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChooseDateTimeComponent implements OnInit {
 
+  selectedDate = new Date();
+  minimumDate = new Date();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selectedChange(date) {
+    this.selectedDate = date;
   }
 
 }

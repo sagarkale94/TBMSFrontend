@@ -15,3 +15,7 @@
 .ic-close:hover{
   background-color: #6b6b6b10;
 }
+
+.login-container form{
+  padding: 40px 10px;
+}

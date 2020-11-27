@@ -52,7 +52,8 @@ export class AppComponent {
   onLogInBtnClick() {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '70%',
-      height: '70%'
+      height: '70%',
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.success) {

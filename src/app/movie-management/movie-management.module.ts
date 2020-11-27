@@ -5,10 +5,11 @@ import { MovieManagementRoutingModule } from './movie-management-routing.module'
 import { MovieListComponent } from './movie-list.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MaterialModule } from '../material/material.module';
+import { DateAndTimeSlotComponent } from './date-and-time-slot/date-and-time-slot.component';
 
 
 @NgModule({
-  declarations: [MovieListComponent, AddMovieComponent],
+  declarations: [MovieListComponent, AddMovieComponent, DateAndTimeSlotComponent],
   imports: [
     CommonModule,
     MovieManagementRoutingModule,

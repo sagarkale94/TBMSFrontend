@@ -4,25 +4,55 @@
     <h2>BookYourShow</h2>
     <h3>Login & Enjoy Your Show</h3>
   </div>
-  <div fxFlex=50 fxLayout="row" fxLayoutAlign="center center">
-    <form [formGroup]="loginFormGroup" fxLayout="column" fxFlex="60" onsubmit="return false;">
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <h4>Sign In</h4>
-      </div>
-      <mat-form-field appearance="outline">
-        <mat-label>Enter your email</mat-label>
-        <input type="email" matInput placeholder="pat@example.com" required formControlName="email">
-        <mat-error>Invalid email</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
-        <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-        <mat-error>Invalid password</mat-error>
-      </mat-form-field>
-      <button type="submit" mat-raised-button color="primary" (click)="onLoginBtnClick()">Login</button>
-    </form>
+  <div fxFlex=50 fxLayout="row" fxLayoutAlign="start start">
+    <mat-tab-group mat-align-tabs="center" [selectedIndex]="selected.value"
+      (selectedIndexChange)="selected.setValue($event)">
+      <mat-tab label="Sign In" fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+        <form [formGroup]="loginFormGroup" fxLayout="column" fxFlex="100" onsubmit="return false;">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your email</mat-label>
+            <input type="email" matInput placeholder="pat@example.com" required formControlName="email">
+            <mat-error>Invalid email</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>Invalid password</mat-error>
+          </mat-form-field>
+          <button type="submit" mat-raised-button color="primary" (click)="onLoginBtnClick()">Login</button>
+        </form>
+      </mat-tab>
+      <mat-tab label="Sign Up">
+        <form [formGroup]="signUpFormGroup" fxLayout="column" fxFlex="100" onsubmit="return false;">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter email</mat-label>
+            <input type="email" matInput placeholder="pat@example.com" required formControlName="email">
+            <mat-hint>Your email will be required while login</mat-hint>
+            <mat-error>Invalid email</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Create password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>Invalid password</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" required formControlName="confirmPassword">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>Password and confirm password should match</mat-error>
+          </mat-form-field>
+          <button type="submit" mat-raised-button color="primary" (click)="onSignUpBtnClick()">Sign Up</button>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+
   </div>
 </div>

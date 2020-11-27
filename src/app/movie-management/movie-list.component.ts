@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MovieManagementService } from './services/movie-management.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -25,6 +26,7 @@ export class MovieListComponent implements OnInit {
     private movieService: MovieManagementService,
     private uiService: UiService,
     public dialog: MatDialog,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -105,6 +107,10 @@ export class MovieListComponent implements OnInit {
         this.getAllMovies();
       }
     });
+  }
+
+  onConfigureMovieDateTimeSlotBtnClicked(movieId) {
+    this.router.navigate([`/movie-management/date-time-slot/${movieId}`]);
   }
 
 }

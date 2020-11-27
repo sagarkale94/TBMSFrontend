@@ -55,6 +55,10 @@
           fxLayoutAlign="end center">
           <div>
             <mat-menu #actionMenu="matMenu">
+              <a mat-menu-item (click)="onConfigureMovieDateTimeSlotBtnClicked(element._id)">
+                <mat-icon matListIcon>query_builder</mat-icon>
+                <span>Date & Time Slot</span>
+              </a>
               <a mat-menu-item (click)="onEditMovieBtnClicked(element._id)">
                 <mat-icon matListIcon>edit</mat-icon>
                 <span>Edit</span>
